@@ -1,0 +1,19 @@
+<div class="wrap">
+  <span id="prTitle">Programming languages and their pros and cons</span>
+  <div class="cardHolder">
+    <ul>
+      <li *ngFor="let prol of programmingLanguages" >
+        <img src="{{prol.imgPath}}" alt="">
+        <span>{{prol.name}}</span>
+        <ul>
+          <li *ngFor="let pro of prol.pros" class="cardPros" >
+            <span>{{pro}}</span>
+          </li>
+          <li *ngFor="let con of prol.cons" class="cardCons" >
+            <span>{{con}}</span>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

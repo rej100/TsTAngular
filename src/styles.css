@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+font-family: 'Bungee', cursive;
+font-family: 'Open Sans', sans-serif;
+*/
+body
+{
+  margin: 0px;
+  padding: 0px;
+  background-color: #457B9D;
+  font-family: "Open Sans", sans-serif;
+}
+/*app-prog-langs
+https://coolors.co/e63946-f1faee-a8dadc-457b9d-1d3557
+*/
+/*placeholder: https://goo.gl/iiefKw*/
+/*
+  IDEAS
+    Welcome
+      Creators with photos and whatever
+    proglangs
+      programming languages and their pros and cons
+        pros and cons in round, green / red boxes
+    Game
+      simple HTML5 canvas game
+    Animation gallery
+      HTML 5 canvas animations from the interwebz
+*/

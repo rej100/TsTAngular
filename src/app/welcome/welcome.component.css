@@ -1,0 +1,64 @@
+p
+{
+  padding: 0px;
+  margin: 0px;
+}
+#trivia
+{
+  float: left;
+  width: 65%;
+  margin: 30px;
+  display: inline-block;
+  background-color: #F1FAEE;
+  text-align: center;
+  box-shadow: -10px 10px 50px -10px black;
+}
+#trivia > .tTitle
+{
+  padding-top: 20px;
+  font-size: 3vw;
+}
+#trivia > .tContent
+{
+  font-size: 1.2vw;
+  text-align: left;
+  padding: 10px;
+}
+#creators
+{
+  float: left;
+  margin: 30px;
+  display: inline-block;
+  background-color: #F1FAEE;
+  text-align: center;
+  box-shadow: -10px 10px 50px -10px black;
+
+}
+#creators > p
+{
+  padding: 20px;
+  padding-bottom: 0px;
+  font-size: 3vw;
+}
+#creators > ul
+{
+  padding: 20px;
+  margin: 0px;
+}
+#creators > ul > li
+{
+  margin-top: 20px;
+  line-height: 100px;
+  display: flex;
+}
+#creators > ul > li > img
+{
+  border-radius: 60px;
+  height: 100px;
+  width: 100px;
+}
+#creators > ul > li > p
+{
+  margin-left: 20px;
+  font-size: 1.8vw;
+}
