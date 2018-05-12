@@ -42,7 +42,8 @@
   display: block;
   float: left;
   padding: 20px;
-  background-color: #F1FAEE;
+  /*background-color: #F1FAEE;*/
+  background-color: #fefefe;
   margin-left: 50px;
   margin-bottom: 50px;
   animation-name: fadeInUpBig;
@@ -67,19 +68,26 @@
   font-size: 1vw;
   list-style: initial;
   float: left;
-  padding-left: 15px;
+  padding-left: 0px;
+  list-style-type: none;
 }
 
 /*pros and cons*/
 .cardHolder > ul > li > ul > li
 {
+  box-shadow: -5px 5px 25px -5px black;
+  display: block;
+  border-radius: 10px;
+  background-color: lightgray;
   text-align: left;
   width: 250px;
   clear: both;
   margin: 0px;
-  padding-left: 0px;
+  margin-top: 10px;
+  padding-left: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
+  color: black;
 }
 /*pros and cons span*/
 .cardHolder > ul > li > ul > li > span
@@ -88,12 +96,12 @@
 /*pros li item*/
 .cardPros
 {
-  color: darkgreen !important;
+  background-color: limegreen !important;
 }
 /*pros li item*/
 .cardCons
 {
-  color: #E63946 !important;
+  background-color: #E63946 !important;
 }
 
 /*

@@ -1,0 +1,13 @@
+#programs
+{
+    display: block;
+    float: left;
+    margin: 50px;
+    width: 30%;
+}
+.matListImg
+{
+    width: 25px;
+    height: 25px;
+    padding-right: 10px;
+}

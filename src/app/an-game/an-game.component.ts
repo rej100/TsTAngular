@@ -79,6 +79,7 @@ export class ANGameComponent implements OnInit
     this.c.font = "30px Arial";
 
     this.c.fillText("SCORE: " + this.score.toString(), 50, 160);
+    this.c.fillText("Press h to shoot", 50, 200);
     this.mainCanon.update(this.mousex);
 
     //there's a 3 in a 500 chance that an enemy will spawn; The x and the y cords are generated randomly for every enemy.
