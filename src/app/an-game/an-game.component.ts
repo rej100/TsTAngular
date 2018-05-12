@@ -84,7 +84,7 @@ export class ANGameComponent implements OnInit
     //there's a 3 in a 500 chance that an enemy will spawn; The x and the y cords are generated randomly for every enemy.
     if(Math.floor(Math.random() * 500) <= 3)
     {
-      this.enemies.push( new Enemy( (Math.floor( Math.random() * (innerWidth - 200) ) + 100), (Math.floor( Math.random() * (innerHeight - 700) ) + 200), 16, this.c, 0, 0, "red", 6 );   )
+      this.enemies.push( new Enemy( (Math.floor( Math.random() * (innerWidth - 200) ) + 100), (Math.floor( Math.random() * (innerHeight - 700) ) + 200), 16, this.c, 0, 0, "red", 6 ) );
     }
 
     for(var i = 0; i < this.ballz.length; ++i)
