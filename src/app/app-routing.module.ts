@@ -8,6 +8,7 @@ import { SourcesComponent } from "./sources/sources.component";
 const routes =
 [
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+  { path: "TsTAngular", redirectTo: '/welcome', pathMatch: 'full' },
   { path: "programmingLanguages", component: ProgLangsComponent},
   { path: "welcome", component: WelcomeComponent},
   { path: "game", component: ANGameComponent},
