@@ -21,6 +21,7 @@ export class ANGameComponent implements OnInit
   mousex: number;
   mousey: number;
   key: any = "";
+  debugFlag: boolean = false;
 
   mainCanon: Canon;
   ballz: CanonBall[] = [];
@@ -55,9 +56,57 @@ export class ANGameComponent implements OnInit
     this.animate();
   }
 
-  getDist(ox: number, oy: number, tx: number, ty: number)
+  getDist(ox: number, oy: number, tx: number, ty: number, debugFlag: boolean )
   {
+    var temp = 0, bx = 0, by = 0, sx = 0, sy = 0;
     let distance: number = Math.sqrt( Math.pow((ox - tx), 2) + Math.pow((oy - ty), 2) );
+    if(debugFlag)
+    {
+      if(ox > tx)
+      {
+        bx = ox;
+        sx = tx;
+      }
+      if(tx > ox)
+      {
+        bx = tx
+        sx = ox;
+      }
+      if(ox === tx)
+      {
+        bx = ox;
+        sx = tx;
+      }
+      if(oy > ty)
+      {
+        by = oy;
+        sy = ty;
+      }
+      if(ty > oy)
+      {
+        by = ty;
+        sy = oy;
+      }
+      if(ty === oy)
+      {
+        by = oy;
+        sy = ty;
+      }
+      this.c.strokeStyle = "white";
+      this.c.beginPath();
+      /*this.c.moveTo(ox, oy);
+      this.c.lineTo(tx, ty);
+      this.c.lineTo(ox - tx, oy - ty);
+      this.c.lineTo(ox, oy);
+      */
+      this.c.moveTo(ox, oy);
+      this.c.lineTo(tx, ty);
+      this.c.lineTo(bx = sx, by - sy);
+      this.c.lineTo(ox, oy);
+      this.c.stroke();
+      this.c.font = "15px Arial";
+      this.c.fillText(distance.toString(), tx, ty);
+    }
     return distance; 
   }
 
@@ -79,13 +128,16 @@ export class ANGameComponent implements OnInit
     this.c.font = "30px Arial";
 
     this.c.fillText("SCORE: " + this.score.toString(), 50, 160);
-    this.c.fillText("Press h to shoot", 50, 200);
+    this.c.fillText("Press h to shoot and y to enable debug mode", 50, 200);
     this.mainCanon.update(this.mousex);
 
     //there's a 3 in a 500 chance that an enemy will spawn; The x and the y cords are generated randomly for every enemy.
     if(Math.floor(Math.random() * 500) <= 3)
     {
+      if(!this.debugFlag)
+      {
       this.enemies.push( new Enemy( (Math.floor( Math.random() * (innerWidth - 200) ) + 100), (Math.floor( Math.random() * (innerHeight - 700) ) + 200), 16, this.c, 0, 0, "red", 6 ) );
+      }
     }
 
     for(var i = 0; i < this.ballz.length; ++i)
@@ -95,7 +147,7 @@ export class ANGameComponent implements OnInit
         let j: number = 0; 
         while(j < this.enemies.length)
         {
-          if(this.getDist(this.ballz[i].x, this.ballz[i].y, this.enemies[j].x, this.enemies[j].y) <= ( this.enemies[j].radius + this.ballz[i].radius ))
+          if(this.getDist(this.ballz[i].x, this.ballz[i].y, this.enemies[j].x, this.enemies[j].y, this.debugFlag) <= ( this.enemies[j].radius + this.ballz[i].radius ))
           {
             this.ballz[i].shouldDraw = false;
             this.enemies[j].shouldDraw = false;
@@ -145,6 +197,10 @@ export class ANGameComponent implements OnInit
           this.canShoot = true;
         }, 250);
       }
+    }
+    if(event.key === "y")
+    {
+      this.debugFlag = !this.debugFlag;
     }
   }
 
