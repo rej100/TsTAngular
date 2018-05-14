@@ -89,6 +89,22 @@
   padding-bottom: 5px;
   color: black;
 }
+.cardHolder > ul > li > ul > li:hover
+{
+  box-shadow: -5px 5px 25px -5px black;
+  display: block;
+  border-radius: 10px;
+  background-color: lightgray;
+  text-align: left;
+  width: 250px;
+  clear: both;
+  margin: 0px;
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: black;
+}
 /*pros and cons span*/
 .cardHolder > ul > li > ul > li > span
 {
