@@ -26,6 +26,8 @@ export class ANGameComponent implements OnInit
   mainCanon: Canon;
   ballz: CanonBall[] = [];
   enemies: Enemy[] = [];
+  fireMode: boolean = false;
+
 
   canShoot: boolean = true;
   score: number = 0;
@@ -58,53 +60,18 @@ export class ANGameComponent implements OnInit
 
   getDist(ox: number, oy: number, tx: number, ty: number, debugFlag: boolean )
   {
-    var temp = 0, bx = 0, by = 0, sx = 0, sy = 0;
     let distance: number = Math.sqrt( Math.pow((ox - tx), 2) + Math.pow((oy - ty), 2) );
     if(debugFlag)
     {
-      if(ox > tx)
-      {
-        bx = ox;
-        sx = tx;
-      }
-      if(tx > ox)
-      {
-        bx = tx
-        sx = ox;
-      }
-      if(ox === tx)
-      {
-        bx = ox;
-        sx = tx;
-      }
-      if(oy > ty)
-      {
-        by = oy;
-        sy = ty;
-      }
-      if(ty > oy)
-      {
-        by = ty;
-        sy = oy;
-      }
-      if(ty === oy)
-      {
-        by = oy;
-        sy = ty;
-      }
       this.c.strokeStyle = "white";
       this.c.beginPath();
-      /*this.c.moveTo(ox, oy);
-      this.c.lineTo(tx, ty);
-      this.c.lineTo(ox - tx, oy - ty);
-      this.c.lineTo(ox, oy);
-      */
       this.c.moveTo(ox, oy);
       this.c.lineTo(tx, ty);
-      this.c.lineTo(bx = sx, by - sy);
+      this.c.lineTo(ox, ty);
       this.c.lineTo(ox, oy);
       this.c.stroke();
       this.c.font = "15px Arial";
+      this.c.fillStyle = "rgba(255, 255, 255, 1)";
       this.c.fillText(distance.toString(), tx, ty);
     }
     return distance; 
@@ -127,8 +94,8 @@ export class ANGameComponent implements OnInit
     this.c.fillStyle = "rgba(255, 255, 255, 1)";
     this.c.font = "30px Arial";
 
-    this.c.fillText("SCORE: " + this.score.toString(), 50, 160);
-    this.c.fillText("Press h to shoot and y to enable debug mode", 50, 200);
+    this.c.fillText("WYNIK: " + this.score.toString(), 50, 160);
+    this.c.fillText("h: strzał | t: tryb strzału | y: debug", 50, 200);
     this.mainCanon.update(this.mousex);
 
     //there's a 3 in a 500 chance that an enemy will spawn; The x and the y cords are generated randomly for every enemy.
@@ -136,7 +103,8 @@ export class ANGameComponent implements OnInit
     {
       if(!this.debugFlag)
       {
-      this.enemies.push( new Enemy( (Math.floor( Math.random() * (innerWidth - 200) ) + 100), (Math.floor( Math.random() * (innerHeight - 700) ) + 200), 16, this.c, 0, 0, "red", 6 ) );
+      this.enemies.push( new Enemy( (Math.floor( Math.random() * (innerWidth - 200) ) + 100),
+      (Math.floor( Math.random() * (innerHeight - 700) ) + 200), 16, this.c, 0, 0, "red", 6 ) );
       }
     }
 
@@ -188,19 +156,39 @@ export class ANGameComponent implements OnInit
   { 
     if(event.key === "h")
     {
+      var delay = 250;
+      if(this.fireMode)
+      {
+        delay = 60;
+      }
       if(this.canShoot)
       {
-        this.ballz.push( new CanonBall( (this.mainCanon.x + ( this.mainCanon.sizex / 2 ) ), this.mainCanon.y, 10, this.c, 0, -10, "lime") );
+        if(!this.fireMode)
+        {
+          this.ballz.push( new CanonBall( (this.mainCanon.x + ( this.mainCanon.sizex / 2 ) ),
+          this.mainCanon.y, 10, this.c, 0, -10, "lime") );
+        }
+        else
+        {
+          var randomVX = ((Math.random() * (0 - 3) + 3).toFixed(4) * (Math.random() < 0.5 ? -1 : 1));
+          this.ballz.push( new CanonBall( (this.mainCanon.x + ( this.mainCanon.sizex / 2 ) ),
+          this.mainCanon.y, 5, this.c, randomVX, -10, "lime") );
+        }
+
         this.canShoot = false;
         setTimeout(() =>
         {
           this.canShoot = true;
-        }, 250);
+        }, delay);
       }
     }
     if(event.key === "y")
     {
       this.debugFlag = !this.debugFlag;
+    }
+    if(event.key === "t")
+    {
+      this.fireMode = !this.fireMode;
     }
   }
 

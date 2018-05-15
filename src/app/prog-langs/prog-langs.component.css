@@ -1,16 +1,3 @@
-@keyframes fadeInUpBig
-{
-  from {
-    opacity: 0;
-    transform: translate3d(0, 2000px, 0);
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
 .wrap
 {
   text-align: center;
@@ -46,9 +33,8 @@
   background-color: #fefefe;
   margin-left: 50px;
   margin-bottom: 50px;
-  animation-name: fadeInUpBig;
-  animation-duration: 1.5s;
 }
+
 /*Card icon*/
 .cardHolder > ul > li > img
 {
