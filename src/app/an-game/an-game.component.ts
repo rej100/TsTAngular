@@ -170,7 +170,10 @@ export class ANGameComponent implements OnInit
         }
         else
         {
-          var randomVX = ((Math.random() * (0 - 3) + 3).toFixed(4) * (Math.random() < 0.5 ? -1 : 1));
+          var plusOrMinus = Math.random() < 0.5 ? -1 : 1;
+          var randomNotNegative = Math.random() * (0 - 3) + 3;
+          var randomVX = Number(randomNotNegative.toFixed(4));
+          randomVX = randomVX * plusOrMinus;
           this.ballz.push( new CanonBall( (this.mainCanon.x + ( this.mainCanon.sizex / 2 ) ),
           this.mainCanon.y, 5, this.c, randomVX, -10, "lime") );
         }
