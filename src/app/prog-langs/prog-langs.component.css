@@ -61,6 +61,7 @@
 /*pros and cons*/
 .cardHolder > ul > li > ul > li
 {
+  position: relative;
   box-shadow: -5px 5px 25px -5px black;
   display: block;
   border-radius: 10px;
@@ -74,22 +75,13 @@
   padding-top: 5px;
   padding-bottom: 5px;
   color: black;
+  left: 0.001px;
+  transition: left 250ms;
 }
 .cardHolder > ul > li > ul > li:hover
 {
-  box-shadow: -5px 5px 25px -5px black;
-  display: block;
-  border-radius: 10px;
-  background-color: lightgray;
-  text-align: left;
-  width: 250px;
-  clear: both;
-  margin: 0px;
-  margin-top: 10px;
-  padding-left: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  color: black;
+  left: 35px;
+  transition: left 250ms;
 }
 /*pros and cons span*/
 .cardHolder > ul > li > ul > li > span

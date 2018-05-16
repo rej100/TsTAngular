@@ -7,7 +7,7 @@ p
 {
   display: block;
   float: left;
-  max-width: 60%;
+  width: 60%;
   margin: 30px;
   margin-left: 6%;
   margin-right: auto;
@@ -64,4 +64,17 @@ p
 {
   margin-left: 20px;
   font-size: 1.8vw;
+}
+#sliderContainer
+{
+  display: block;
+  position: relative;
+  float: left;
+  padding: 10px;
+  width: 59.2%;
+  margin: 30px;
+  margin-left: 6%;
+  margin-right: auto;
+  background-color: #fefefe;
+  box-shadow: -10px 10px 50px -10px black;
 }
