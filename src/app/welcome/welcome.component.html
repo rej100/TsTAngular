@@ -18,5 +18,11 @@
   </p>
 </div>
 <div id="sliderContainer">
-  <div id="slider"></div>
+  <img id="leftSliderButton" src="https://www.shareicon.net/data/512x512/2015/12/01/680601_arrows_512x512.png" alt="" (click) = "slide('left');">
+  <div id="sliderContainerIn">
+    <div id="slider">
+      <img *ngFor = "let slide of slides" class="slide" src="{{slide.url}}">
+    </div>
+  </div>
+  <img id="rightSliderButton" src="https://www.shareicon.net/data/512x512/2015/12/01/680601_arrows_512x512.png" alt="" (click) = "slide('right');">
 </div>
