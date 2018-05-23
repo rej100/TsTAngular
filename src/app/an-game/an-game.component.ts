@@ -37,6 +37,7 @@ export class ANGameComponent implements OnInit
     this.mousex = 0;
     this.mousey = 0;
   }
+
   ngOnInit()
   {
     window.addEventListener("mousemove", (event) =>
@@ -52,7 +53,15 @@ export class ANGameComponent implements OnInit
 
     this.c = this.canvas.getContext("2d");
 
-    console.log(this.c);
+    window.onresize = () =>
+    {
+      this.canvas.width = innerWidth;
+      this.canvas.height = innerHeight;
+      if(this.mainCanon)
+      {
+        this.mainCanon.y = innerHeight - 100;
+      }
+    }
 
     this.constructProps();
     this.animate();
@@ -79,18 +88,16 @@ export class ANGameComponent implements OnInit
 
   constructProps()
   {
-    this.mainCanon = new Canon(800, 850, 50, 80, this.c, 16, 5, "white");
-    //console.log(this.getDist(3, 2, 2, 2));
-    //this.enemies.push( new Enemy( 500, 250, 16, this.c, 0, 0, "red", 6 ) );
+    this.mainCanon = new Canon(800, innerHeight - 100, 50, 80, this.c, 20, 5, "white");
   }
 
 
   animate()
   {
     requestAnimationFrame(() => {this.animate()});
-
-    this.c.fillStyle = "rgba(0, 0, 0, 0.2)";
-    this.c.fillRect(0, 0, innerWidth, innerHeight);
+    this.c.clearRect(0,0,this.canvas.width,this.canvas.height);
+    //this.c.fillStyle = "rgba(0, 0, 0, 0.1)";
+    //this.c.fillRect(0, 0, innerWidth, innerHeight);
     this.c.fillStyle = "rgba(255, 255, 255, 1)";
     this.c.font = "30px Arial";
 

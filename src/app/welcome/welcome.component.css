@@ -113,6 +113,17 @@ p
   width: 100px;
   height: 100px;
   transform: rotate(180deg);
+  transition: transform 250ms ease-in;
+}
+#leftSliderButton:hover
+{
+  transition: transform 250ms ease;
+  transform: scale(1.1);
+}
+#rightSliderButton:hover
+{
+  transition: transform 250ms ease;
+  transform: scale(1.1) rotate(180deg);
 }
 .slideLeft
 {
