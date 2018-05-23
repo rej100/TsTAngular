@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class WelcomeComponent implements OnInit
 {
 
-  slideWidth: number = 640;
+  slideWidth: number = 800;
   id: any;
   pos: any;
   oldPos: any;
