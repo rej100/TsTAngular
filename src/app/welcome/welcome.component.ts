@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class WelcomeComponent implements OnInit
 {
 
-  slideWidth: number = 800;
+  slideWidth: number = 0;
   id: any;
   pos: any;
   oldPos: any;
@@ -29,7 +29,16 @@ export class WelcomeComponent implements OnInit
   ]
   
   constructor() { }
-  ngOnInit() {
+  ngOnInit()
+  {
+    setTimeout(() => {this.updateSliderWidth();}, 100);
+  }
+
+  updateSliderWidth: any = () =>
+  {
+    let elem = document.getElementsByClassName("slide");
+    this.slideWidth = elem[0].width;
+    setTimeout(this.updateSliderWidth, 100);
   }
 
   frame: any = (elem: any, direction: string) =>
@@ -65,7 +74,6 @@ export class WelcomeComponent implements OnInit
     elem.style.left = this.pos + "px";
     console.log(this.pos, this.oldPos);
   }
-
   slide(direction: string)
   {
     if( (this.canSlide && (((this.slideCounter - 1) >= 0) && (direction === "right"))) || (this.canSlide && ((this.slideCounter + 1) <= (this.slides.length - 1) && (direction === "left"))))

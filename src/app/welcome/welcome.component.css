@@ -13,35 +13,38 @@ p
 }
 #creators
 {
+  
   margin-top: 30px;
   background-color: #fefefe;
   text-align: center;
+  position: relative;
   box-shadow: -10px 10px 50px -10px black;
+  
 }
-#creators > p
+#creators  p
 {
   padding: 20px;
   padding-bottom: 0px;
   font-size: 3vw;
 }
-#creators > ul
+#creators  ul
 {
   padding: 20px;
   margin: 0px;
 }
-#creators > ul > li
+#creators  ul  li
 {
   margin-top: 20px;
   line-height: 100px;
   display: flex;
 }
-#creators > ul > li > img
+#creators  ul  li  img
 {
   border-radius: 60px;
   height: 100px;
   width: 100px;
 }
-#creators > ul > li > p
+#creators  ul  li  p
 {
   margin-left: 20px;
   font-size: 1.8vw;
@@ -79,11 +82,16 @@ p
 }
 #sliderContainer
 {
+  /*
   --slide-width: 800px;
   --slide-height: 450px;
+  */
+  --slide-width: 40vw;
+  --slide-height: 24vw;
   display: inline-flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   position: relative;
 }
 #sliderContainerIn
