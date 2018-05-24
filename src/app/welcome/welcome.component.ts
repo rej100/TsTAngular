@@ -28,7 +28,9 @@ export class WelcomeComponent implements OnInit
     {url: "https://i.imgur.com/9CLFTW2.jpg"},
   ]
   
-  constructor() { }
+  constructor()
+  {
+  }
   ngOnInit()
   {
     setTimeout(() => {this.updateSliderWidth();}, 100);
@@ -36,8 +38,9 @@ export class WelcomeComponent implements OnInit
 
   updateSliderWidth: any = () =>
   {
-    let elem = document.getElementsByClassName("slide");
-    this.slideWidth = elem[0].width;
+    let elemList = document.getElementsByClassName("slide");
+    let styles = window.getComputedStyle(elemList[0]);
+    this.slideWidth = Number(styles.width.slice(0, -2));
     setTimeout(this.updateSliderWidth, 100);
   }
 
